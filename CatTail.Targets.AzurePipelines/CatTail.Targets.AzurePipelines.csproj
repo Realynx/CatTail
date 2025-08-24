@@ -9,7 +9,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\CatTail\CatTail.csproj"/>
         <ProjectReference Include="..\CatTail.Targets.Common\CatTail.Targets.Common.csproj" />
     </ItemGroup>
 </Project>
