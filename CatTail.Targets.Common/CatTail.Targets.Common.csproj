@@ -5,11 +5,11 @@
         <TargetFramework>net9.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-        <RootNamespace>Realynx.CatTail.Targets.AzurePipelines</RootNamespace>
+        <RootNamespace>Realynx.CatTail.Targets.Common</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
         <ProjectReference Include="..\..\CatTail\CatTail.csproj"/>
-        <ProjectReference Include="..\CatTail.Targets.Common\CatTail.Targets.Common.csproj" />
     </ItemGroup>
+
 </Project>

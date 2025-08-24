@@ -14,15 +14,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Targets", "Targets", "{46369734-73FF-467B-BCC9-F6D2373896B9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CatTail.Targets.Common", "CatTail.Targets.Common\CatTail.Targets.Common.csproj", "{390589D6-4666-4864-91A1-2196A06C7C9A}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CatTail.Targets.GitHubActions", "CatTail.Targets.GitHubActions\CatTail.Targets.GitHubActions.csproj", "{E75D1DCC-FDD3-41A0-ABBA-66C7E6E024C7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CatTail.Targets.AzurePipelines", "CatTail.Targets.AzurePipelines\CatTail.Targets.AzurePipelines.csproj", "{65B6249C-9311-4F76-9916-BD5F89EF7311}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CatTail.Targets.ShellScript", "CatTail.Targets.ShellScript\CatTail.Targets.ShellScript.csproj", "{893D729D-CBF1-4BAF-BB34-C407E69990CE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CatTail.Demo", "Demos\CatTail.Demo\CatTail.Demo.csproj", "{EE8BF3CC-8FB7-45B0-9A2F-84B3C5C2D53B}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Demos", "Demos", "{261DEE33-C898-4E9D-88D4-583A18C0F273}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CatTail.Demo", "Demos\CatTail.Demo\CatTail.Demo.csproj", "{EE8BF3CC-8FB7-45B0-9A2F-84B3C5C2D53B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,11 +59,16 @@ Global
 		{EE8BF3CC-8FB7-45B0-9A2F-84B3C5C2D53B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EE8BF3CC-8FB7-45B0-9A2F-84B3C5C2D53B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EE8BF3CC-8FB7-45B0-9A2F-84B3C5C2D53B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{390589D6-4666-4864-91A1-2196A06C7C9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{390589D6-4666-4864-91A1-2196A06C7C9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{390589D6-4666-4864-91A1-2196A06C7C9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{390589D6-4666-4864-91A1-2196A06C7C9A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{E75D1DCC-FDD3-41A0-ABBA-66C7E6E024C7} = {46369734-73FF-467B-BCC9-F6D2373896B9}
 		{65B6249C-9311-4F76-9916-BD5F89EF7311} = {46369734-73FF-467B-BCC9-F6D2373896B9}
 		{893D729D-CBF1-4BAF-BB34-C407E69990CE} = {46369734-73FF-467B-BCC9-F6D2373896B9}
 		{EE8BF3CC-8FB7-45B0-9A2F-84B3C5C2D53B} = {261DEE33-C898-4E9D-88D4-583A18C0F273}
+		{390589D6-4666-4864-91A1-2196A06C7C9A} = {46369734-73FF-467B-BCC9-F6D2373896B9}
 	EndGlobalSection
 EndGlobal
