@@ -5,10 +5,13 @@
         <TargetFramework>net9.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-        <RootNamespace>Realynx.CatTail.Targets.AzurePipelines</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
+        <ProjectReference Include="..\..\CatTail.Targets.AzurePipelines\CatTail.Targets.AzurePipelines.csproj"/>
+        <ProjectReference Include="..\..\CatTail.Targets.GitHubActions\CatTail.Targets.GitHubActions.csproj"/>
+        <ProjectReference Include="..\..\CatTail.Targets.ShellScript\CatTail.Targets.ShellScript.csproj"/>
         <ProjectReference Include="..\..\CatTail\CatTail.csproj"/>
     </ItemGroup>
+
 </Project>
