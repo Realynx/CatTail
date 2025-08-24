@@ -1,18 +1,13 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-
-using Realynx.CatTail.Services;
-using Realynx.CatTail.Services.Interfaces;
+﻿using Microsoft.Extensions.Hosting;
 
 namespace Realynx.CatTail;
 
-public static partial class HostBuilderExtensions {
+public static class HostBuilderExtensions {
     public static CatTailOptions UseCatTail(this IHostBuilder hostBuilder) {
         hostBuilder.ConfigureServices((context, services) => {
-            services
-                .AddSingleton<IShell, Shell>()
-                .AddSingleton(new SolutionFileReader(""));
+            throw new NotImplementedException();
         });
+
         return new CatTailOptions();
     }
 }

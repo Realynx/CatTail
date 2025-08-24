@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-using Realynx.CatTail.Attributes;
+using Realynx.CatTail.Interfaces;
 
 namespace Realynx.CatTail;
 
@@ -13,7 +13,7 @@ internal class BuildService : IHostedService {
     }
 
     public Task StartAsync(CancellationToken cancellationToken) {
-        var allBuldScripts = _serviceProvider.GetServices<IBuildScript>();
+        var allBuildScripts = _serviceProvider.GetServices<IBuildScript>();
 
         return Task.CompletedTask;
     }

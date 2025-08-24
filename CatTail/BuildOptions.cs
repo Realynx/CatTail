@@ -6,7 +6,6 @@ public class BuildOptions {
     public string stageName;
     public DirectoryInfo outputDirectory;
 
-
     public BuildOptions Stage(string name) {
         stageName = name;
         return this;
