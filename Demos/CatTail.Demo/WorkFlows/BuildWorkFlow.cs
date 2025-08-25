@@ -20,8 +20,8 @@ public class BuildWorkFlow : IAzureStage, IWorkFlow {
 
     public void ConfigureJobs(JobConfigurator config) {
         config
-            .AddJob(new MyTestJob("Test"))
-            .AddJob(new MyBuildJob("Build", dependsOn: ["Test"]))
-            .AddJobAfter(new MyLastJob("Final"));
+            .AddJob<MyTestJob>("Test")
+            .AddJob<MyBuildJob>("Build", dependsOn: ["Test"])
+            .AddJobAfter<MyLastJob>("Final");
     }
 }

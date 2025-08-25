@@ -1,16 +1,13 @@
-﻿using Realynx.CatTail.Targets.Common.Configurators;
-using Realynx.CatTail.Targets.Common.Interfaces;
+﻿namespace Realynx.CatTail.Targets.Common.Models;
 
-namespace Realynx.CatTail.Targets.Common.Models;
-
-public abstract class Job : IJob {
-    public string Name { get; internal set; }
-    public string[] DependsOn { get; internal set; }
-
-    protected Job(string name, string[]? dependsOn = null) {
+internal record Job {
+    public Job(Type jobType, string name, string[]? dependsOn) {
+        JobType = jobType;
         Name = name;
         DependsOn = dependsOn ?? [];
     }
 
-    public abstract void ConfigureSteps(StepConfigurator config);
+    public Type JobType { get; set; }
+    public string Name { get; set; }
+    public string[] DependsOn { get; set; }
 }

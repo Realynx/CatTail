@@ -8,7 +8,4 @@
         <RootNamespace>Realynx.CatTail.Targets.Common</RootNamespace>
     </PropertyGroup>
 
-    <ItemGroup>
-    </ItemGroup>
-
 </Project>

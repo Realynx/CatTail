@@ -11,15 +11,14 @@ public class BuildScriptRegistrations : IIncrementalGenerator {
         // Grab all class symbols with a base list
         var classDeclarations = context.SyntaxProvider
             .CreateSyntaxProvider(
-                predicate: static (s, _) => s is ClassDeclarationSyntax cds && cds.BaseList != null,
-                transform: static (ctx, _) => (INamedTypeSymbol?)ctx.SemanticModel.GetDeclaredSymbol(ctx.Node)
+                predicate: static (node, _) => node is ClassDeclarationSyntax { BaseList: not null },
+                transform: static (context, token) => (INamedTypeSymbol?)context.SemanticModel.GetDeclaredSymbol(context.Node, token)
             )
             .Where(symbol => symbol is not null);
 
         // Get the IBuildScript symbol from the compilation
         var buildScriptInterface = context.CompilationProvider
-            .Select((compilation, _) =>
-                compilation.GetTypeByMetadataName("Realynx.CatTail.Attributes.IBuildScript"));
+            .Select((compilation, _) => compilation.GetTypeByMetadataName("Realynx.CatTail.Interfaces.IBuildScript"));
 
         // Pair up class declarations with the IBuildScript symbol
         var buildScripts = classDeclarations.Combine(buildScriptInterface)
@@ -31,20 +30,27 @@ public class BuildScriptRegistrations : IIncrementalGenerator {
 
         // Generate source
         context.RegisterSourceOutput(buildScripts.Collect(), (spc, scripts) => {
-            var sb = new StringBuilder();
-            sb.AppendLine("using Microsoft.Extensions.DependencyInjection;");
-            sb.AppendLine("namespace Realynx.CatTail.Generators.Generated {");
-            sb.AppendLine("  public static class BuildScriptServiceCollectionExtensions {");
-            sb.AppendLine("    public static IServiceCollection AddBuildScripts(this IServiceCollection services) {");
+            var sb = new StringBuilder(
+                """
+                using Microsoft.Extensions.DependencyInjection;
+
+                namespace Realynx.CatTail.Generators.Generated {
+                  public static class BuildScriptServiceCollectionExtensions {
+                    public static IServiceCollection AddBuildScripts(this IServiceCollection services) {
+                    
+                """);
 
             foreach (var type in scripts.Distinct(SymbolEqualityComparer.Default)) {
-                sb.AppendLine($"      services.AddSingleton<IBuildScript, {type.ToDisplayString()}>();");
+                sb.AppendLine($"      services.AddSingleton<IBuildScript, {type.ContainingNamespace.ToDisplayString()}.{type.ToDisplayString()}>();");
             }
 
-            sb.AppendLine("      return services;");
-            sb.AppendLine("    }");
-            sb.AppendLine("  }");
-            sb.AppendLine("}");
+            sb.Append(
+                """
+                      return services;
+                    }
+                  }
+                }
+                """);
 
             spc.AddSource("BuildScriptRegistration.g.cs", sb.ToString());
         });

@@ -1,15 +1,14 @@
 ﻿using Realynx.CatTail.Targets.Common.Configurators;
-using Realynx.CatTail.Targets.Common.Models;
+using Realynx.CatTail.Targets.Common.Interfaces;
+using Realynx.CatTail.Targets.Common.Tasks;
 
 namespace CatTail.Demo.Jobs;
 
-public class MyTestJob : Job {
-    public MyTestJob(string name, string[]? dependsOn = null) : base(name, dependsOn) { }
-
-    public override void ConfigureSteps(StepConfigurator config) {
+public class MyTestJob : IJob {
+    public void ConfigureSteps(StepConfigurator config) {
         config
             .AddStep("Step 1", Step1)
-            .AddStep("Step 2", Shell.Run("Echo", "Hellow, world!"))
+            .AddStep("Step 2", DotNet.Test("TestProject.csproj"))
             .AddStep("Step 3", Step3);
     }
 
