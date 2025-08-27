@@ -8,4 +8,8 @@
         <RootNamespace>Realynx.CatTail.Targets.Common</RootNamespace>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\CatTail\CatTail.csproj" />
+    </ItemGroup>
+
 </Project>

@@ -1,6 +1,10 @@
-﻿using Microsoft.Extensions.Hosting;
+﻿using CatTail.Demo.WorkFlows;
+
+using Microsoft.Extensions.Hosting;
 
 using Realynx.CatTail;
+using Realynx.CatTail.Targets.AzurePipelines.Extensions;
+using Realynx.CatTail.Targets.Common.Extensions;
 
 namespace CatTail.Demo;
 
@@ -10,9 +14,8 @@ public static class Program {
             .ConfigureDefaults(args);
 
         builderHost.UseCatTail()
-            .AddBuildStage("Test")
-            .AddBuildStage("Build")
-            .AddBuildStage("Publish");
+            .AddWorkFlow<BuildWorkFlow>()
+            .AddStagedWorkFlow<StagedBuildWorkFlow>();
 
         builderHost.UseConsoleLifetime();
         var host = builderHost.Build();

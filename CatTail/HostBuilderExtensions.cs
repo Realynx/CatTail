@@ -8,6 +8,6 @@ public static class HostBuilderExtensions {
             throw new NotImplementedException();
         });
 
-        return new CatTailOptions();
+        return new CatTailOptions(hostBuilder);
     }
 }
